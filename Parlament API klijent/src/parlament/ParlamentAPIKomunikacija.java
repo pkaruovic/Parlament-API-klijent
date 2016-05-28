@@ -22,10 +22,6 @@ public class ParlamentAPIKomunikacija {
 				try {
 					String result = sendGet(membersURL);
 		
-		
-		
-		
-		
 					Gson gson = new GsonBuilder().create();
 					JsonArray membersJson = gson.fromJson(result, JsonArray.class);
 		
@@ -39,7 +35,7 @@ public class ParlamentAPIKomunikacija {
 						m.setIme(memberJson.get("name").getAsString());
 						m.setPrezime(memberJson.get("lastName").getAsString());
 						if (memberJson.get("birthDate") != null)
-							m.setDatumRodjenja((Date) sdf.parse(memberJson.get("birthDate").getAsString()));
+							m.setDatumRodjenja(sdf.parse(memberJson.get("birthDate").getAsString()));
 		
 						members.add(m);
 					}
